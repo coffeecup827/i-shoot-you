@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ljyhjof2og8y"]
+
+[ext_resource type="Texture2D" uid="uid://d2hw4mryn6erh" path="res://assets/SpaceShip/SpaceShip.png" id="1_4flbx"]
+
+[node name="Player" type="Node2D" unique_id=2145286388]
+
+[node name="PlayerShip" type="Sprite2D" parent="." unique_id=1987589027]
+texture = ExtResource("1_4flbx")
