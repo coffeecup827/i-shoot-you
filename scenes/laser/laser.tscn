@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c5gtm1u68e6r"]
+
+[ext_resource type="Texture2D" uid="uid://kwlimyhnnli5" path="res://assets/Laser/image_e28a6ac8.png" id="1_0kheo"]
+
+[node name="Laser" type="Area2D" unique_id=530928921]
+
+[node name="Area2D" type="Sprite2D" parent="." unique_id=704769103]
+position = Vector2(754, 464)
+rotation = 1.5707964
+texture = ExtResource("1_0kheo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=654276943]
+polygon = PackedVector2Array(778, -202, 723, -130, 741, -90, 748, -61, 756, 964, 724, 1033, 763, 1080, 812, 1080, 838, 1040, 809, 968, 807, 942, 806, -57, 830, -105, 831, -143, 826, -177)

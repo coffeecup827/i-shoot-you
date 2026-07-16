@@ -5,12 +5,16 @@
 
 [node name="Meteor" type="Area2D" unique_id=1143099220]
 script = ExtResource("1_5jmab")
+meteorDefaultSpeed = 100.0
 
 [node name="Meteor" type="Sprite2D" parent="." unique_id=1171420043]
-position = Vector2(590, 312)
+position = Vector2(35.80002, 36.200043)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_tcwo0")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2055533428]
+position = Vector2(-17.321533, 6.403595)
+scale = Vector2(0.09296322, 0.09597008)
 polygon = PackedVector2Array(511, 30, 293, 279, 298, 352, 462, 560, 611, 580, 889, 390, 954, 330, 915, 149, 675, 20, 547, 22)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
