@@ -5,6 +5,7 @@
 
 [node name="Player" type="Node2D" unique_id=2145286388 node_paths=PackedStringArray("_playerShip")]
 script = ExtResource("1_dovo2")
+_speed = 1500
 _playerShip = NodePath("PlayerShip")
 
 [node name="PlayerShip" type="Sprite2D" parent="." unique_id=1987589027]

@@ -1,8 +1,10 @@
 using Godot;
-using System;
+using iShootYou;
 
 public partial class Player : Node2D
 {
+	[Export]
+	private int _speed;
 
 	[Export] 
 	private Node2D _playerShip;
@@ -15,6 +17,8 @@ public partial class Player : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_playerShip.Rotation += 1 * (float)delta;
+
+		var input = Input.GetVector(InputActions.MoveLeft, InputActions.MoveRight, InputActions.MoveUp, InputActions.MoveDown);
+		_playerShip.Position += input * _speed * (float)delta;
 	}
 }
