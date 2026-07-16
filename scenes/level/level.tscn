@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://towpwthqie75"]
+[gd_scene format=3 uid="uid://clpae3e1rfyi5"]
 
 [ext_resource type="Texture2D" uid="uid://bhsttrak2m5be" path="res://assets/Background/StaticBG.png" id="1_i166f"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
@@ -11,9 +11,9 @@ position = Vector2(577, 324)
 texture = ExtResource("1_i166f")
 
 [node name="Player" parent="." unique_id=2145286388 instance=ExtResource("2_qkmgm")]
-position = Vector2(606, 539)
+position = Vector2(621, 556)
 scale = Vector2(0.1, 0.1)
 
 [node name="Meteor" parent="." unique_id=669171732 instance=ExtResource("3_hnne4")]
-position = Vector2(406, 251)
+position = Vector2(552, 405)
 scale = Vector2(0.1, 0.1)

@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="iShootYou"
-run/main_scene="uid://towpwthqie75"
+run/main_scene="uid://clpae3e1rfyi5"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
