@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5gtm1u68e6r"]
 
-[ext_resource type="Texture2D" uid="uid://kwlimyhnnli5" path="res://assets/Laser/image_e28a6ac8.png" id="1_0kheo"]
+[ext_resource type="Texture2D" uid="uid://kwlimyhnnli5" path="res://assets/laser/image_e28a6ac8.png" id="1_0kheo"]
 
 [node name="Laser" type="Area2D" unique_id=530928921]
 

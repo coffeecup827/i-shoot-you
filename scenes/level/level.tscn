@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clpae3e1rfyi5"]
 
-[ext_resource type="Texture2D" uid="uid://bhsttrak2m5be" path="res://assets/Background/StaticBG.png" id="1_i166f"]
+[ext_resource type="Texture2D" uid="uid://bhsttrak2m5be" path="res://assets/background/StaticBG.png" id="1_i166f"]
 [ext_resource type="Script" uid="uid://db0k41gc1e2nq" path="res://scenes/level/Level.cs" id="1_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
 
