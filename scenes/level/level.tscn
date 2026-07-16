@@ -10,9 +10,10 @@ size = Vector2(54, 720)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmgm"]
 size = Vector2(1315, 116)
 
-[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors")]
+[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors", "_lasers")]
 script = ExtResource("1_qkmgm")
 _meteors = NodePath("Meteors")
+_lasers = NodePath("Lasers")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=857513838]
 position = Vector2(651, 355)
@@ -25,24 +26,29 @@ scale = Vector2(0.1, 0.1)
 [node name="Border" type="Node2D" parent="." unique_id=669321504]
 
 [node name="RightBorder" type="StaticBody2D" parent="Border" unique_id=429089004]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RightBorder" unique_id=481716583]
 position = Vector2(1308, 360)
 shape = SubResource("RectangleShape2D_i166f")
 
 [node name="LeftBorder" type="StaticBody2D" parent="Border" unique_id=1736640335]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LeftBorder" unique_id=312208644]
 position = Vector2(-28, 360)
 shape = SubResource("RectangleShape2D_i166f")
 
 [node name="TopBorder" type="StaticBody2D" parent="Border" unique_id=43674220]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/TopBorder" unique_id=1740051257]
 position = Vector2(653.5, -59)
 shape = SubResource("RectangleShape2D_qkmgm")
 
 [node name="BottomBorder" type="StaticBody2D" parent="Border" unique_id=1587855760]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/BottomBorder" unique_id=1505065729]
 position = Vector2(653.5, 775)
@@ -54,4 +60,7 @@ autostart = true
 
 [node name="Meteors" type="Node2D" parent="." unique_id=769416243]
 
+[node name="Lasers" type="Node2D" parent="." unique_id=1603021710]
+
+[connection signal="PlayerShoot" from="Player" to="." method="OnPlayerShoot"]
 [connection signal="timeout" from="MeteorTimer" to="." method="OnMeteorTimerTimeout"]

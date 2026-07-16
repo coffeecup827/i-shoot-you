@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b6qy0oa3bcreq" path="res://scenes/player/Player.cs" id="1_dovo2"]
 
 [node name="Player" type="CharacterBody2D" unique_id=450431539 node_paths=PackedStringArray("_playerShip")]
+collision_mask = 6
 script = ExtResource("1_dovo2")
 _speed = 500
 _playerShip = NodePath("PlayerShip")
