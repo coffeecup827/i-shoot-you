@@ -8,6 +8,7 @@ scale = Vector2(0.25, 0.25)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_j8ec3")
+laserSpeed = 500
 
 [node name="Laser" type="Sprite2D" parent="." unique_id=704769103]
 position = Vector2(-4, 1)
