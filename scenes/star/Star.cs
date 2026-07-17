@@ -11,11 +11,11 @@ public partial class Star : Node2D
         Position = new Vector2((float)GD.RandRange(0, GetViewportRect().Size.X), (float)GD.RandRange(0, GetViewportRect().Size.Y));
 
         _animatedStar.AnimationFinished += () => QueueFree();
-        _animatedStar.Play("default");
+        _animatedStar.Play(GodotProperty.defaultProperty);
     }
 
     public override void _Process(double delta)
     {
-        Position += new Vector2(0, 40) * (float)delta;
+        Position += new Vector2(0, 50) * (float)delta;
     }
 }

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://db0k41gc1e2nq" path="res://scenes/level/Level.cs" id="1_qkmgm"]
 [ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
+[ext_resource type="PackedScene" uid="uid://cg05mufntwi6k" path="res://scenes/level/headsUpDisplay.tscn" id="4_qkmgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i166f"]
 size = Vector2(54, 720)
@@ -20,23 +21,29 @@ _stars = NodePath("Background/Stars")
 position = Vector2(684, 407.00003)
 scale = Vector2(1.4942857, 1.3771429)
 texture = ExtResource("2_i166f")
+metadata/_edit_lock_ = true
 
 [node name="Stars" type="Node2D" parent="Background" unique_id=1376069052]
 position = Vector2(-457.7438, -295.53946)
 scale = Vector2(0.6692161, 0.7261411)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=2145286388 instance=ExtResource("2_qkmgm")]
-position = Vector2(621, 556)
+position = Vector2(547, 579)
 scale = Vector2(0.1, 0.1)
+metadata/_edit_lock_ = true
 
 [node name="Border" type="Node2D" parent="." unique_id=669321504]
+metadata/_edit_lock_ = true
 
 [node name="RightBorder" type="StaticBody2D" parent="Border" unique_id=429089004]
 collision_layer = 4
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RightBorder" unique_id=481716583]
 position = Vector2(1308, 360)
 shape = SubResource("RectangleShape2D_i166f")
+metadata/_edit_lock_ = true
 
 [node name="LeftBorder" type="StaticBody2D" parent="Border" unique_id=1736640335]
 collision_layer = 4
@@ -44,6 +51,7 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LeftBorder" unique_id=312208644]
 position = Vector2(-28, 360)
 shape = SubResource("RectangleShape2D_i166f")
+metadata/_edit_lock_ = true
 
 [node name="TopBorder" type="StaticBody2D" parent="Border" unique_id=43674220]
 collision_layer = 4
@@ -51,6 +59,7 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/TopBorder" unique_id=1740051257]
 position = Vector2(653.5, -59)
 shape = SubResource("RectangleShape2D_qkmgm")
+metadata/_edit_lock_ = true
 
 [node name="BottomBorder" type="StaticBody2D" parent="Border" unique_id=1587855760]
 collision_layer = 4
@@ -59,18 +68,23 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/BottomBorder" unique_id=1505065729]
 position = Vector2(653.5, 775)
 shape = SubResource("RectangleShape2D_qkmgm")
+metadata/_edit_lock_ = true
 
 [node name="MeteorTimer" type="Timer" parent="." unique_id=2029756747]
 wait_time = 0.5
 autostart = true
 
-[node name="Meteors" type="Node2D" parent="." unique_id=769416243]
-
 [node name="Lasers" type="Node2D" parent="." unique_id=1603021710]
+metadata/_edit_lock_ = true
+
+[node name="Meteors" type="Node2D" parent="." unique_id=769416243]
+metadata/_edit_lock_ = true
 
 [node name="StarTimer" type="Timer" parent="." unique_id=1375515959]
-wait_time = 0.2
+wait_time = 0.15
 autostart = true
+
+[node name="HeadUpDisplay" parent="." unique_id=2102597142 instance=ExtResource("4_qkmgm")]
 
 [connection signal="PlayerShoot" from="Player" to="." method="OnPlayerShoot"]
 [connection signal="timeout" from="MeteorTimer" to="." method="OnMeteorTimerTimeout"]

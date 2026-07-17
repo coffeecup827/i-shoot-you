@@ -31,6 +31,22 @@ public partial class Meteor : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("Meteor hit: " + body.Name);
+		if (body is Player)
+		{
+			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
+			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, body);
+			QueueFree();
+		}
+	}
+
+	private void OnAreaEntered(Area2D area)
+	{
+		if (area is Laser)
+		{
+			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
+			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, area);
+			area.QueueFree();
+			QueueFree();
+		}
 	}
 }
