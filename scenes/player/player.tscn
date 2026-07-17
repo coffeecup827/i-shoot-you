@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://d2hw4mryn6erh" path="res://assets/spaceShip/SpaceShip.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b6qy0oa3bcreq" path="res://scenes/player/Player.cs" id="1_dovo2"]
 
-[node name="Player" type="CharacterBody2D" unique_id=450431539 node_paths=PackedStringArray("_playerShip", "_laserSpawnPoint")]
+[node name="Player" type="CharacterBody2D" unique_id=450431539 node_paths=PackedStringArray("_playerShip", "_laserSpawnPoint", "laserTimer")]
 collision_mask = 6
 script = ExtResource("1_dovo2")
 _speed = 500
 _playerShip = NodePath("PlayerShip")
 _laserSpawnPoint = NodePath("LaserSpawnPoint")
+laserTimer = NodePath("LaserTimer")
 
 [node name="PlayerShip" type="Sprite2D" parent="." unique_id=1987589027]
 position = Vector2(992, 113)
@@ -22,6 +23,5 @@ position = Vector2(995, -309)
 
 [node name="LaserTimer" type="Timer" parent="." unique_id=1495893810]
 wait_time = 0.3
-autostart = true
 
 [connection signal="timeout" from="LaserTimer" to="." method="OnLaserTimerTimeout"]
