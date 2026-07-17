@@ -6,4 +6,6 @@ public static class Paths
     {
         return $"res://assets/meteor/{number}.png";
     }
+
+    public static string playerShipPath = "res://assets/spaceShip/SpaceShip.png";
 }

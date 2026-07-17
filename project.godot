@@ -26,6 +26,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="iShootYou"
 
+[gui]
+
+theme/custom="uid://ick5dosfh7ji"
+
 [input]
 
 go_left={

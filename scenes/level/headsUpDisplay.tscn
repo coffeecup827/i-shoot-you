@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cg05mufntwi6k"]
+
+[ext_resource type="Script" uid="uid://cwpq61138bcjp" path="res://scenes/level/HeadsUpDisplay.cs" id="1_tm6df"]
+
+[node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock")]
+script = ExtResource("1_tm6df")
+_scoreLabel = NodePath("CanvasLayer/KillCounterContainer/KillCounter")
+_hitpoints = 3
+_hitpointsBlock = NodePath("CanvasLayer/HitPointsContainer/HitPointsBlock")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1844247762]
+
+[node name="KillCounterContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1614942675]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.5
+offset_right = 38.5
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 12
+
+[node name="KillCounter" type="Label" parent="CanvasLayer/KillCounterContainer" unique_id=641792235]
+layout_mode = 2
+text = " KILLS "
+
+[node name="HitPointsContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1668600947]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="HitPointsBlock" type="HBoxContainer" parent="CanvasLayer/HitPointsContainer" unique_id=1282386620]
+layout_mode = 2
