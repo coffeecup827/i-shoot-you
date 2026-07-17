@@ -1,13 +1,27 @@
 [gd_scene format=3 uid="uid://ljyhjof2og8y"]
 
-[ext_resource type="Texture2D" uid="uid://d2hw4mryn6erh" path="res://assets/SpaceShip/SpaceShip.png" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://d2hw4mryn6erh" path="res://assets/spaceShip/SpaceShip.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://b6qy0oa3bcreq" path="res://scenes/player/Player.cs" id="1_dovo2"]
 
-[node name="Player" type="Node2D" unique_id=2145286388 node_paths=PackedStringArray("_playerShip")]
+[node name="Player" type="CharacterBody2D" unique_id=450431539 node_paths=PackedStringArray("_playerShip", "_laserSpawnPoint")]
+collision_mask = 6
 script = ExtResource("1_dovo2")
-_speed = 1500
+_speed = 500
 _playerShip = NodePath("PlayerShip")
+_laserSpawnPoint = NodePath("LaserSpawnPoint")
 
 [node name="PlayerShip" type="Sprite2D" parent="." unique_id=1987589027]
-position = Vector2(526, 526)
+position = Vector2(992, 113)
 texture = ExtResource("1_4flbx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1982296469]
+polygon = PackedVector2Array(824, -265, 767, -92, 719, -53, 557, 41, 561, 79, 742, 107, 742, 168, 817, 187, 890, 212, 970, 301, 1020, 296, 1091, 193, 1175, 209, 1278, 125, 1298, 86, 1456, 95, 1308, -19, 1225, -3, 1150, -261, 1123, -119, 1082, -115, 1025, -179, 956, -172, 899, -103, 876, -112)
+
+[node name="LaserSpawnPoint" type="Marker2D" parent="." unique_id=550675176]
+position = Vector2(995, -309)
+
+[node name="LaserTimer" type="Timer" parent="." unique_id=1495893810]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="LaserTimer" to="." method="OnLaserTimerTimeout"]

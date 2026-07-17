@@ -1,9 +1,23 @@
 [gd_scene format=3 uid="uid://qs2u1wohm7c0"]
 
-[ext_resource type="Texture2D" uid="uid://sciktpt0pk8q" path="res://assets/Meteor/SimpleMeteor.png" id="1_tcwo0"]
+[ext_resource type="Script" uid="uid://osumna1b0aij" path="res://scenes/meteor/Meteor.cs" id="1_5jmab"]
+[ext_resource type="Texture2D" uid="uid://oj8qwofwrutw" path="res://assets/meteor/1.png" id="1_tcwo0"]
 
-[node name="Meteor" type="Node2D" unique_id=669171732]
+[node name="Meteor" type="Area2D" unique_id=1143099220 node_paths=PackedStringArray("_meteorSprite")]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_5jmab")
+meteorDefaultSpeed = 100.0
+_meteorSprite = NodePath("Meteor")
 
 [node name="Meteor" type="Sprite2D" parent="." unique_id=1171420043]
-position = Vector2(590, 312)
+position = Vector2(13.528553, 10)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_tcwo0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2055533428]
+position = Vector2(-37.370575, -4.9687505)
+scale = Vector2(0.097467825, 0.10156249)
+polygon = PackedVector2Array(352.6351, 68.6154, 293, 279, 301.33612, 413.23083, 462, 560, 611, 580, 721.98773, 551.077, 780.5667, 476.77808, 878.13763, 349.6372, 915, 149, 763.0269, 9.538467, 547, 22)
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

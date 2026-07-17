@@ -1,24 +1,39 @@
 using Godot;
 using iShootYou;
 
-public partial class Player : Node2D
+public partial class Player : CharacterBody2D
 {
 	[Export]
 	private int _speed;
 
-	[Export] 
-	private Node2D _playerShip;
+	[Export]
+	private Sprite2D _playerShip;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+	[Export]
+	private Marker2D _laserSpawnPoint;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	[Signal]
+	public delegate void PlayerShootEventHandler(Vector2 position);
+
+	private bool canShoot = true;
+
 	public override void _Process(double delta)
 	{
 
 		var input = Input.GetVector(InputActions.MoveLeft, InputActions.MoveRight, InputActions.MoveUp, InputActions.MoveDown);
-		_playerShip.Position += input * _speed * (float)delta;
+		
+		Velocity = input * _speed;
+		MoveAndSlide();
+
+		if (Input.IsActionPressed(InputActions.Shoot) && canShoot)
+		{
+			EmitSignal(SignalName.PlayerShoot, _laserSpawnPoint.GlobalPosition);
+			canShoot = false;
+		}
+	}
+
+	private void OnLaserTimerTimeout()
+	{
+		canShoot = true;
 	}
 }
