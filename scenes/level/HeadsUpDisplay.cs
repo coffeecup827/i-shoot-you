@@ -81,6 +81,8 @@ public partial class HeadsUpDisplay : Node2D
     {
         _score = v;
         _scoreLabel.Text = $"{_score} KILLS";
+        Global global = GetNode<Global>(Paths.globalPath);
+        global.Score = _score;
     }
 
 }

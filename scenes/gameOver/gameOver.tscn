@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ct3psdv4j8kbt" path="res://scenes/gameOver/GameOver.cs" id="1_4mswj"]
 [ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="1_7s3h2"]
 
-[node name="GameOver" type="Control" unique_id=1408711907]
+[node name="GameOver" type="Control" unique_id=1408711907 node_paths=PackedStringArray("_lastScore")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4mswj")
+_lastScore = NodePath("CenterContainer/VBoxContainer/KillCounterLabel")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1577633978]
 layout_mode = 1
