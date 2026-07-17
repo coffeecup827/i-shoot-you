@@ -1,4 +1,5 @@
 using Godot;
+using iShootYou;
 using System;
 
 public partial class HeadsUpDisplay : Node2D
@@ -37,7 +38,13 @@ public partial class HeadsUpDisplay : Node2D
         if (body is Player)
         {
             _hitpoints--;
-            _hitpointsBlock.GetChild<TextureRect>(_hitpoints).QueueFree();
+            if (_hitpoints <= 0)
+            {
+                GetTree().CallDeferred(SceneTree.MethodName.ChangeSceneToFile, Scenes.GameOverScene);
+            } else
+            {
+                _hitpointsBlock.GetChild<TextureRect>(_hitpoints).QueueFree();
+            }
         }
         else if (body is Laser)
         {
