@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://clpae3e1rfyi5"]
 
-[ext_resource type="Texture2D" uid="uid://bhsttrak2m5be" path="res://assets/background/StaticBG.png" id="1_i166f"]
 [ext_resource type="Script" uid="uid://db0k41gc1e2nq" path="res://scenes/level/Level.cs" id="1_qkmgm"]
+[ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i166f"]
@@ -10,14 +10,20 @@ size = Vector2(54, 720)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmgm"]
 size = Vector2(1315, 116)
 
-[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors", "_lasers")]
+[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors", "_lasers", "_stars")]
 script = ExtResource("1_qkmgm")
 _meteors = NodePath("Meteors")
 _lasers = NodePath("Lasers")
+_stars = NodePath("Background/Stars")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=857513838]
-position = Vector2(651, 355)
-texture = ExtResource("1_i166f")
+position = Vector2(684, 407.00003)
+scale = Vector2(1.4942857, 1.3771429)
+texture = ExtResource("2_i166f")
+
+[node name="Stars" type="Node2D" parent="Background" unique_id=1376069052]
+position = Vector2(-457.7438, -295.53946)
+scale = Vector2(0.6692161, 0.7261411)
 
 [node name="Player" parent="." unique_id=2145286388 instance=ExtResource("2_qkmgm")]
 position = Vector2(621, 556)
@@ -62,5 +68,10 @@ autostart = true
 
 [node name="Lasers" type="Node2D" parent="." unique_id=1603021710]
 
+[node name="StarTimer" type="Timer" parent="." unique_id=1375515959]
+wait_time = 0.2
+autostart = true
+
 [connection signal="PlayerShoot" from="Player" to="." method="OnPlayerShoot"]
 [connection signal="timeout" from="MeteorTimer" to="." method="OnMeteorTimerTimeout"]
+[connection signal="timeout" from="StarTimer" to="." method="OnStarTimerTimeout"]

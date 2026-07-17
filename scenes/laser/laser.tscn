@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5gtm1u68e6r"]
 
-[ext_resource type="Texture2D" uid="uid://kwlimyhnnli5" path="res://assets/laser/image_e28a6ac8.png" id="1_0kheo"]
 [ext_resource type="Script" uid="uid://cmwj7p6rrwt6j" path="res://scenes/laser/Laser.cs" id="1_j8ec3"]
+[ext_resource type="Texture2D" uid="uid://yba2ya5qmdrw" path="res://assets/laser/Laser.png" id="2_j8ec3"]
 
 [node name="Laser" type="Area2D" unique_id=530928921]
 scale = Vector2(0.25, 0.25)
@@ -14,7 +14,7 @@ laserSpeed = 500
 position = Vector2(-4, 1)
 rotation = 1.5707964
 scale = Vector2(0.11810001, 0.20234141)
-texture = ExtResource("1_0kheo")
+texture = ExtResource("2_j8ec3")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2006495300]
 polygon = PackedVector2Array(0, -79, 9, -72, 6, -61, 4, 61, 10, 67, 1, 75, -6, 70, -5, 60, -4, -59, -11, -68)
