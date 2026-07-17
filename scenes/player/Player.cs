@@ -9,8 +9,13 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private Sprite2D _playerShip;
 
+	[Export]
+	private Marker2D _laserSpawnPoint;
+
 	[Signal]
 	public delegate void PlayerShootEventHandler(Vector2 position);
+
+	private bool canShoot = true;
 
 	public override void _Process(double delta)
 	{
@@ -20,9 +25,15 @@ public partial class Player : CharacterBody2D
 		Velocity = input * _speed;
 		MoveAndSlide();
 
-		if (Input.IsActionPressed(InputActions.Shoot))
+		if (Input.IsActionPressed(InputActions.Shoot) && canShoot)
 		{
-			EmitSignal(SignalName.PlayerShoot, Position);
+			EmitSignal(SignalName.PlayerShoot, _laserSpawnPoint.GlobalPosition);
+			canShoot = false;
 		}
+	}
+
+	private void OnLaserTimerTimeout()
+	{
+		canShoot = true;
 	}
 }

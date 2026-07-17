@@ -21,6 +21,8 @@ public partial class Level : Node2D
 	{
 		GD.Print($"Player shoot at position: {position}");
 		
-
+		var laser = laserScene.Instantiate<Laser>();
+		laser.Position = position;
+		_lasers.AddChild(laser);
 	}
 }
