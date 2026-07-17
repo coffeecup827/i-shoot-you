@@ -74,10 +74,10 @@ metadata/_edit_lock_ = true
 wait_time = 0.5
 autostart = true
 
-[node name="Meteors" type="Node2D" parent="." unique_id=769416243]
+[node name="Lasers" type="Node2D" parent="." unique_id=1603021710]
 metadata/_edit_lock_ = true
 
-[node name="Lasers" type="Node2D" parent="." unique_id=1603021710]
+[node name="Meteors" type="Node2D" parent="." unique_id=769416243]
 metadata/_edit_lock_ = true
 
 [node name="StarTimer" type="Timer" parent="." unique_id=1375515959]

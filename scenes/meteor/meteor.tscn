@@ -20,4 +20,5 @@ position = Vector2(-37.370575, -4.9687505)
 scale = Vector2(0.097467825, 0.10156249)
 polygon = PackedVector2Array(352.6351, 68.6154, 293, 279, 301.33612, 413.23083, 462, 560, 611, 580, 721.98773, 551.077, 780.5667, 476.77808, 878.13763, 349.6372, 915, 149, 763.0269, 9.538467, 547, 22)
 
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
