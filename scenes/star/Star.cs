@@ -14,4 +14,8 @@ public partial class Star : Node2D
         _animatedStar.Play("default");
     }
 
+    public override void _Process(double delta)
+    {
+        Position += new Vector2(0, 40) * (float)delta;
+    }
 }

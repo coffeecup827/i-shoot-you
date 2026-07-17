@@ -19,7 +19,7 @@ texture = ExtResource("1_4flbx")
 polygon = PackedVector2Array(824, -265, 767, -92, 719, -53, 557, 41, 561, 79, 742, 107, 742, 168, 817, 187, 890, 212, 970, 301, 1020, 296, 1091, 193, 1175, 209, 1278, 125, 1298, 86, 1456, 95, 1308, -19, 1225, -3, 1150, -261, 1123, -119, 1082, -115, 1025, -179, 956, -172, 899, -103, 876, -112)
 
 [node name="LaserSpawnPoint" type="Marker2D" parent="." unique_id=550675176]
-position = Vector2(995, -309)
+position = Vector2(989, -195)
 
 [node name="LaserTimer" type="Timer" parent="." unique_id=1495893810]
 wait_time = 0.3

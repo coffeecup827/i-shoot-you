@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://cmwj7p6rrwt6j" path="res://scenes/laser/Laser.cs" id="1_j8ec3"]
 [ext_resource type="Texture2D" uid="uid://yba2ya5qmdrw" path="res://assets/laser/Laser.png" id="2_j8ec3"]
 
-[node name="Laser" type="Area2D" unique_id=530928921]
+[node name="Laser" type="Area2D" unique_id=530928921 node_paths=PackedStringArray("_laserSprite")]
 scale = Vector2(0.25, 0.25)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_j8ec3")
 laserSpeed = 500
+_laserSprite = NodePath("Laser")
 
 [node name="Laser" type="Sprite2D" parent="." unique_id=704769103]
 position = Vector2(-4, 1)
