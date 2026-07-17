@@ -9,6 +9,8 @@ public partial class Meteor : Area2D
 
 	[Export]
 	private Sprite2D _meteorSprite;
+	[Signal]
+	public delegate void MeteorHitEventHandler(Node2D body);
 
 	int meteorXDirection = 0;
 	float meteorSpeed = 0;
@@ -31,12 +33,20 @@ public partial class Meteor : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("Meteor hit: " + body.Name);
+		if (body is Player)
+		{
+			EmitSignal(SignalName.MeteorHit, body);
+			QueueFree();
+		}
 	}
 
 	private void OnAreaEntered(Area2D area)
 	{
-		area.QueueFree();
-		QueueFree();
+		if (area is Laser)
+		{
+			EmitSignal(SignalName.MeteorHit, area);
+			area.QueueFree();
+			QueueFree();
+		}
 	}
 }

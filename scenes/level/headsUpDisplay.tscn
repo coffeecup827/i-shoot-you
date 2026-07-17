@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwpq61138bcjp" path="res://scenes/level/HeadsUpDisplay.cs" id="1_tm6df"]
 
-[node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock")]
+[node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock") groups=["UI"]]
 script = ExtResource("1_tm6df")
 _scoreLabel = NodePath("CanvasLayer/KillCounterContainer/KillCounter")
 _hitpoints = 3
@@ -22,7 +22,8 @@ theme_override_constants/margin_top = 12
 
 [node name="KillCounter" type="Label" parent="CanvasLayer/KillCounterContainer" unique_id=641792235]
 layout_mode = 2
-text = " KILLS "
+theme_type_variation = &"KillCounterLabel"
+text = " 0 KILLS "
 
 [node name="HitPointsContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1668600947]
 anchors_preset = 2

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://6rat7f8r1hj1"]
+
+[ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="1_7s3h2"]
+
+[node name="GameOver" type="Control" unique_id=1408711907]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1577633978]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -748.5
+offset_top = -410.5
+offset_right = 748.5
+offset_bottom = 410.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7s3h2")
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=187757320]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -66.0
+offset_right = 150.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1974444318]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2115185273]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Header"
+text = "Game Over
+"
+
+[node name="KillCounterLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=920110243]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"KillCounterLabel"
+text = "0 KILLS"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1089065266]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -162.5
+offset_top = -40.0
+offset_right = 162.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 24
+metadata/_edit_lock_ = true
+
+[node name="RestartLabel" type="Label" parent="MarginContainer" unique_id=1559434364]
+layout_mode = 2
+theme_type_variation = &"KillCounterLabel"
+text = "Press Space To Start Again"
