@@ -9,8 +9,6 @@ public partial class Meteor : Area2D
 
 	[Export]
 	private Sprite2D _meteorSprite;
-	[Signal]
-	public delegate void MeteorHitEventHandler(Node2D body);
 
 	int meteorXDirection = 0;
 	float meteorSpeed = 0;
@@ -35,7 +33,8 @@ public partial class Meteor : Area2D
 	{
 		if (body is Player)
 		{
-			EmitSignal(SignalName.MeteorHit, body);
+			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
+			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, body);
 			QueueFree();
 		}
 	}
@@ -44,7 +43,8 @@ public partial class Meteor : Area2D
 	{
 		if (area is Laser)
 		{
-			EmitSignal(SignalName.MeteorHit, area);
+			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
+			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, area);
 			area.QueueFree();
 			QueueFree();
 		}

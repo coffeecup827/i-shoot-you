@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwpq61138bcjp" path="res://scenes/level/HeadsUpDisplay.cs" id="1_tm6df"]
 
-[node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock") groups=["UI"]]
+[node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock")]
 script = ExtResource("1_tm6df")
 _scoreLabel = NodePath("CanvasLayer/KillCounterContainer/KillCounter")
 _hitpoints = 3

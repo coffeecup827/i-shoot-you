@@ -11,13 +11,38 @@ public partial class HeadsUpDisplay : Node2D
     private HBoxContainer _hitpointsBlock;
 
     private int _score;
+    
+    private EventBus eventBus;
 
     public override void _Ready()
     {
-        SetScore(0);
+        eventBus = GetNode<EventBus>(Paths.eventBusPath);
         _hitpointsBlock.LayoutDirection = Control.LayoutDirectionEnum.Ltr;
         _hitpointsBlock.AddThemeConstantOverride(GodotProperty.separation, 20);
+
+        SetScore(0);
         AddHitpoints(_hitpoints);
+
+        eventBus.MeteorHit += OnMeteorHit;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        eventBus.MeteorHit -= OnMeteorHit;
+    }
+
+    private void OnMeteorHit(Node2D body)
+    {
+        if (body is Player)
+        {
+            _hitpoints--;
+            _hitpointsBlock.GetChild<TextureRect>(_hitpoints).QueueFree();
+        }
+        else if (body is Laser)
+        {
+            SetScore(_score + 1);
+        }
     }
 
     private void AddHitpoints(int hitpoints)
