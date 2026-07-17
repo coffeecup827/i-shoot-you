@@ -12,6 +12,9 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private Marker2D _laserSpawnPoint;
 
+	[Export]
+	private Timer laserTimer;
+
 	[Signal]
 	public delegate void PlayerShootEventHandler(Vector2 position);
 
@@ -29,6 +32,7 @@ public partial class Player : CharacterBody2D
 		{
 			EmitSignal(SignalName.PlayerShoot, _laserSpawnPoint.GlobalPosition);
 			canShoot = false;
+			laserTimer.Start();
 		}
 	}
 
