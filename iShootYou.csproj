@@ -3,4 +3,18 @@
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Ignore Files in Tools On Godot Engine Build -->
+    <Compile Remove="Tools\**\*.cs" />
+  </ItemGroup>
+
+  <!-- Pre-Build Automation Trigger Link -->
+  <Target Name="RunAudioGeneratorTool" BeforeTargets="BeforeBuild">
+    <Message Text="[Game Build Pipeline] Running Internal Audio Tool..." Importance="high" />
+    <Exec Command="dotnet run --project tools/GameTools.csproj --configuration Release" 
+      StandardOutputImportance="high" 
+      StandardErrorImportance="high" 
+    />
+  </Target>
 </Project>

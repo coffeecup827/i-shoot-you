@@ -4,3 +4,7 @@
 
 #apkbuilds
 /builds/
+
+#tool builds
+/tools/bin/
+/tools/obj/
