@@ -18,7 +18,7 @@ texture = ExtResource("1_tcwo0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2055533428]
 position = Vector2(-37.370575, -4.9687505)
 scale = Vector2(0.097467825, 0.10156249)
-polygon = PackedVector2Array(352.6351, 68.6154, 293, 279, 301.33612, 413.23083, 462, 560, 611, 580, 721.98773, 551.077, 780.5667, 476.77808, 878.13763, 349.6372, 915, 149, 763.0269, 9.538467, 547, 22)
+polygon = PackedVector2Array(321.8557, 68.6154, 219.25775, 285.2308, 291.07632, 492.0001, 465.49286, 590.4616, 701.46814, 629.84625, 763.027, 560.92316, 855.3651, 492.0001, 906.6641, 344.30774, 947.7033, 88.30771, 773.28674, -39.692307, 537.3114, -20)
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]

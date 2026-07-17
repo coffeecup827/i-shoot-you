@@ -36,6 +36,7 @@ public partial class Meteor : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
-		GD.Print("Meteor hit: " + area.Name);
+		area.QueueFree();
+		QueueFree();
 	}
 }
