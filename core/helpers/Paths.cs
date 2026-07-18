@@ -8,6 +8,7 @@ public static class Paths
     }
 
     public static string playerShipPath = "res://assets/spaceShip/SpaceShip.png";
+    public static string audioPath = "assets\\audio";
 
     public static string eventBusPath = "/root/EventBus";
     public static string globalPath = "/root/Global";

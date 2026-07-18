@@ -15,6 +15,12 @@ public static class AudioInitialiser
         Console.WriteLine("[TOOL] Running Audio Initialiser...");
 
         HashSet<string> sounds = new HashSet<string>();
+
+        if(!Directory.Exists(audioFolderPath))
+        {
+            throw new Exception($"Folder: {audioFolderPath} not found.");
+        }
+
         var audioSubFolders = Directory.GetDirectories(audioFolderPath).ToList();
 
         audioSubFolders.ForEach(subfolder => AddSound(subfolder, sounds));
@@ -40,6 +46,10 @@ public static class AudioInitialiser
 
     private static void AddSound(string subfolder, HashSet<string> sounds)
     {
+        if(!Directory.Exists(subfolder))
+        {
+            throw new Exception($"Folder: {subfolder} not found.");
+        }
         var validAudioFiles = Directory.GetFiles(subfolder).Where(x => audioFormats.Contains(Path.GetExtension(x)));
         foreach (var audioFile in validAudioFiles)
         {

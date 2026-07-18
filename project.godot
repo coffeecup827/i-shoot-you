@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://core/EventBus.cs"
 Global="*uid://cus23mtx7nocn"
+AudioManager="*uid://bibsahyi8dpqm"
 
 [display]
 
