@@ -9,8 +9,7 @@ public partial class GameOver : Control
 
     public override void _Ready()
     {
-        Global global = GetNode<Global>(Paths.globalPath);
-        _lastScore.Text = $"{global.Score} Kills";
+        _lastScore.Text = $"{GlobalState.Instance.Score} Kills";
     }
 
 	public override void _Process(double delta)

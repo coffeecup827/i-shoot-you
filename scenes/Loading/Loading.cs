@@ -7,6 +7,7 @@ public partial class Loading : Control
     {
         AudioManager.Initialise(GetTree());
         EventBus.Initialise(GetTree());
+        GlobalState.Initialise(GetTree());
     }
 
     public override void _Ready()
