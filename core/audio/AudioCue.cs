@@ -12,5 +12,5 @@ public static class AudioCue
     public const string LaserSound4 = "laser_sound_4";
     public const string MusicBgmFast = "music_bgm_fast";
     public const string MusicBgmSlow = "music_bgm_slow";
-    public const string PlayerPlayerHit = "player_player_hit";
+    public const string PlayerHit = "player_hit";
 }
