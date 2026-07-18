@@ -30,13 +30,31 @@ public static class AudioInitialiser
         sb.AppendLine("// ========================================== ");
         sb.AppendLine("// AUTO-GENERATED AT BUILD TIME. DO NOT EDIT.");
         sb.AppendLine("// ========================================== ");
-        sb.AppendLine("public static class AudioCue");
+        sb.AppendLine("using System;");
+        
+        sb.AppendLine("public enum AudioCue");
         sb.AppendLine("{");
         foreach (var key in sounds)
         {
             string pascalIdentifier = ToPascalCase(key);
-            sb.AppendLine($"    public const string {pascalIdentifier} = \"{key}\";");
+            //sb.AppendLine($"    public const string {pascalIdentifier} = \"{key}\";");
+            sb.AppendLine($"    {pascalIdentifier},");
         }
+        sb.AppendLine("}");
+
+        sb.AppendLine("public static class AudioCueExtensions");
+        sb.AppendLine("{");
+
+        sb.AppendLine("    public static string GetCue(this AudioCue audioCue) => audioCue switch");
+        sb.AppendLine("    {");
+        foreach (var key in sounds)
+        {
+            string pascalIdentifier = ToPascalCase(key);
+            sb.AppendLine($"       AudioCue.{pascalIdentifier} => \"{key}\",");
+        }
+        sb.AppendLine("        _ => throw new ArgumentOutOfRangeException(nameof(audioCue))");
+        sb.AppendLine("    };");
+        
         sb.AppendLine("}");
 
         File.WriteAllText(outputFilePath, sb.ToString());

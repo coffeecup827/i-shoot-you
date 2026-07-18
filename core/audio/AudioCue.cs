@@ -1,16 +1,34 @@
 // ========================================== 
 // AUTO-GENERATED AT BUILD TIME. DO NOT EDIT.
 // ========================================== 
-public static class AudioCue
+using System;
+public enum AudioCue
 {
-    public const string ExplosionSound1 = "explosion_sound_1";
-    public const string ExplosionSound2 = "explosion_sound_2";
-    public const string ExplosionSound3 = "explosion_sound_3";
-    public const string LaserSound1 = "laser_sound_1";
-    public const string LaserSound2 = "laser_sound_2";
-    public const string LaserSound3 = "laser_sound_3";
-    public const string LaserSound4 = "laser_sound_4";
-    public const string MusicBgmFast = "music_bgm_fast";
-    public const string MusicBgmSlow = "music_bgm_slow";
-    public const string PlayerHit = "player_hit";
+    ExplosionSound1,
+    ExplosionSound2,
+    ExplosionSound3,
+    LaserSound1,
+    LaserSound2,
+    LaserSound3,
+    LaserSound4,
+    MusicBgmFast,
+    MusicBgmSlow,
+    PlayerHit,
+}
+public static class AudioCueExtensions
+{
+    public static string GetCue(this AudioCue audioCue) => audioCue switch
+    {
+       AudioCue.ExplosionSound1 => "explosion_sound_1",
+       AudioCue.ExplosionSound2 => "explosion_sound_2",
+       AudioCue.ExplosionSound3 => "explosion_sound_3",
+       AudioCue.LaserSound1 => "laser_sound_1",
+       AudioCue.LaserSound2 => "laser_sound_2",
+       AudioCue.LaserSound3 => "laser_sound_3",
+       AudioCue.LaserSound4 => "laser_sound_4",
+       AudioCue.MusicBgmFast => "music_bgm_fast",
+       AudioCue.MusicBgmSlow => "music_bgm_slow",
+       AudioCue.PlayerHit => "player_hit",
+        _ => throw new ArgumentOutOfRangeException(nameof(audioCue))
+    };
 }

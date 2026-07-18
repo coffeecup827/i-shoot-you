@@ -71,10 +71,10 @@ public partial class AudioManager : Node
         }
     }
 
-    public void PlaySfx(string cueName)
+    public void PlaySfx(AudioCue cueName)
     {
         var freePlayer = _sfxPlayers.Find(player => !player.Playing);
-        freePlayer.Stream = _sounds[cueName];
+        freePlayer.Stream = _sounds[cueName.GetCue()];
         freePlayer.Play();
     }
 }
