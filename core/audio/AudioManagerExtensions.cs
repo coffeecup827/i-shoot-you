@@ -9,7 +9,7 @@ public static class AudioManagerExtensions
             audioManager._sounds.Add(AudioCue.RandomLaser.GetCue(), audioManager._BuildAudioStreamRandomiser(Paths.laserAudioPath, 1f));
         }
 
-        audioManager.PlaySfx(AudioCue.RandomLaser);
+        audioManager.PlaySfx(AudioCue.RandomLaser, -10f);
     }
 
     public static void PlayRandomExplosionSound(this AudioManager audioManager)
@@ -19,6 +19,6 @@ public static class AudioManagerExtensions
             audioManager._sounds.Add(AudioCue.RandomExplosion.GetCue(), audioManager._BuildAudioStreamRandomiser(Paths.explosionAudioPath, 1f));
         }
 
-        audioManager.PlaySfx(AudioCue.RandomExplosion);
+        audioManager.PlaySfx(AudioCue.RandomExplosion, -12f);
     }
 }

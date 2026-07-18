@@ -18,7 +18,7 @@ public partial class AudioManager : Node
 
     private readonly List<AudioStreamPlayer2D> _sfxPlayers = new();
 
-    private readonly AudioStreamPlayer2D _bgm = new AudioStreamPlayer2D();
+    private readonly AudioStreamPlayer2D _bgmPlayer = new AudioStreamPlayer2D();
 
     
     private readonly HashSet<string> validAudioFiles = [".wav", ".mp3"];
@@ -42,7 +42,7 @@ public partial class AudioManager : Node
             AddChild(player);
             _sfxPlayers.Add(player);
         }
-        AddChild(_bgm);
+        AddChild(_bgmPlayer);
 
         ScanAndAddAudio(Paths.audioPath);
     }
@@ -84,8 +84,6 @@ public partial class AudioManager : Node
             RandomPitch = pitchScale
         };
 
-        GD.Print(string.Join(", ", directoryPath));
-
         foreach (var audioFile in Directory.GetFiles(directoryPath).Where(file => validAudioFiles.Contains(Path.GetExtension(file))))
         {
             audioPool.AddStream(0, GD.Load<AudioStream>(audioFile));
@@ -94,10 +92,30 @@ public partial class AudioManager : Node
         return audioPool;
     }
 
-    public void PlaySfx(AudioCue cueName)
+    public void PlaySfx(AudioCue cueName, float volume = -6.0f)
     {
         var freePlayer = _sfxPlayers.Find(player => !player.Playing);
         freePlayer.Stream = _sounds[cueName.GetCue()];
+        freePlayer.VolumeDb = volume;
         freePlayer.Play();
+    }
+
+    public void PlayBGM(AudioCue cueName, float volume = -6.0f)
+    {
+        if(_bgmPlayer.Playing)
+        {
+            _bgmPlayer.Stop();
+        }
+        _bgmPlayer.Stream = _sounds[cueName.GetCue()];
+        _bgmPlayer.VolumeDb = volume;
+        _bgmPlayer.Play();
+    }
+
+    public void StopBGM(AudioCue cueName)
+    {
+        if(_bgmPlayer.Playing)
+        {
+            _bgmPlayer.Stop();
+        }
     }
 }

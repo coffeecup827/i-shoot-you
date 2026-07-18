@@ -17,6 +17,8 @@ public partial class HeadsUpDisplay : Node2D
 
     public override void _Ready()
     {
+        AudioManager.Instance.PlayBGM(AudioCue.MusicBgmSlow, -3.0f);
+
         eventBus = GetNode<EventBus>(Paths.eventBusPath);
         _hitpointsBlock.LayoutDirection = Control.LayoutDirectionEnum.Ltr;
         _hitpointsBlock.AddThemeConstantOverride(GodotProperty.separation, 20);
@@ -48,6 +50,10 @@ public partial class HeadsUpDisplay : Node2D
         }
         else if (body is Laser)
         {
+            if(_score > 100)
+            {
+                AudioManager.Instance.PlayBGM(AudioCue.MusicBgmFast, -3.0f);
+            }
             SetScore(_score + 1);
         }
     }
