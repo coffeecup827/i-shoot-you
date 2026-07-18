@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <!-- Ignore Files in Tools On Godot Engine Build -->
-    <Compile Remove="Tools\**\*.cs" />
+    <Compile Remove="tools\**\*.cs" />
   </ItemGroup>
 
   <!-- Pre-Build Automation Trigger Link -->

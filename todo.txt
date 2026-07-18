@@ -2,3 +2,10 @@
 - Scene Transition Manager
 - GPUParticles2D and Camera2D
 - fully dynamic background
+
+
+
+cd %LOCALAPPDATA%\Android\Sdk\platform-tools
+
+adb pair 192.168.0.117:34457
+

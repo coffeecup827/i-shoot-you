@@ -47,32 +47,37 @@ public partial class AudioManager : Node
 
     private void ScanAndAddAudio(string audioFolderPath)
     {
-        if (!Directory.Exists(audioFolderPath))
+        using var rootDir = DirAccess.Open(audioFolderPath);
+        if (rootDir == null)
         {
             throw new DirectoryNotFoundException($"Directory Not Found at {audioFolderPath}");
         }
-        var subFolders = Directory.GetDirectories(audioFolderPath);
+        var subFolders = rootDir.GetDirectories();
 
-        foreach (var folder in subFolders)
+        foreach (var subFolder in subFolders)
         {
-            if(!Directory.Exists(folder))
+            var subFolderPath = $"{audioFolderPath}/{subFolder}";
+            using var subFolderDir = DirAccess.Open(subFolderPath);
+            if (subFolderDir == null)
             {
-                throw new DirectoryNotFoundException($"Directory Not Found at {folder}");
+                throw new DirectoryNotFoundException($"Directory Not Found at {subFolderPath}");
             }
 
-            foreach (var audioFile in Directory.GetFiles(folder).Where(file => validAudioFiles.Contains(Path.GetExtension(file))))
+            foreach (var audioFileName in subFolderDir.GetFiles().Where(file => validAudioFiles.Contains(Path.GetExtension(file.Replace(".import", "")))))
             {
-                string key = $"{Path.GetFileName(folder)}_{Path.GetFileNameWithoutExtension(audioFile)}";
-                var audioStream = GD.Load<AudioStream>(audioFile);
-                
-                _sounds.Add(key, audioStream);
+                var cleanName = audioFileName.Replace(".import", "");
+                var audioPath = $"{subFolderPath}/{cleanName}";
+                string key = $"{subFolder}_{Path.GetFileNameWithoutExtension(cleanName)}";
+                var audioStream = GD.Load<AudioStream>(audioPath);
+                _sounds[key] = audioStream;
             }
         }
     }
 
     public AudioStreamRandomizer _BuildAudioStreamRandomiser(string directoryPath, float pitchScale)
     {
-        if(!Directory.Exists(directoryPath))
+        using var dir = DirAccess.Open(directoryPath);
+        if (dir == null)
         {
             throw new DirectoryNotFoundException($"Directory Not Found at {directoryPath}");
         }
@@ -82,9 +87,11 @@ public partial class AudioManager : Node
             RandomPitch = pitchScale
         };
 
-        foreach (var audioFile in Directory.GetFiles(directoryPath).Where(file => validAudioFiles.Contains(Path.GetExtension(file))))
+        foreach (var audioFileName in dir.GetFiles().Where(file => validAudioFiles.Contains(Path.GetExtension(file.Replace(".import", "")))))
         {
-            audioPool.AddStream(0, GD.Load<AudioStream>(audioFile));
+            var cleanName = audioFileName.Replace(".import", "");
+            var audioPath = $"{directoryPath}/{cleanName}";
+            audioPool.AddStream(0, GD.Load<AudioStream>(audioPath));
         }
 
         return audioPool;
