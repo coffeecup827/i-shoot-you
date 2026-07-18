@@ -34,8 +34,7 @@ public partial class Meteor : Area2D
 		if (body is Player)
 		{
 			AudioManager.Instance.PlaySfx(AudioCue.PlayerHit);
-			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
-			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, body);
+			EventBus.Instance.EmitSignal(EventBus.SignalName.MeteorHit, body);
 			QueueFree();
 		}
 	}
@@ -45,8 +44,7 @@ public partial class Meteor : Area2D
 		if (area is Laser)
 		{
 			AudioManager.Instance.PlayRandomExplosionSound();
-			var eventBus = GetNode<EventBus>(Paths.eventBusPath);
-			eventBus.EmitSignal(EventBus.SignalName.MeteorHit, area);
+			EventBus.Instance.EmitSignal(EventBus.SignalName.MeteorHit, area);
 			area.QueueFree();
 			QueueFree();
 		}

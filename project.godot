@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://core/EventBus.cs"
 Global="*uid://cus23mtx7nocn"
 
 [display]

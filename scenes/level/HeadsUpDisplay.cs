@@ -12,27 +12,24 @@ public partial class HeadsUpDisplay : Node2D
     private HBoxContainer _hitpointsBlock;
 
     private int _score;
-    
-    private EventBus eventBus;
 
     public override void _Ready()
     {
         AudioManager.Instance.PlayBGM(AudioCue.MusicBgmSlow, -3.0f);
 
-        eventBus = GetNode<EventBus>(Paths.eventBusPath);
         _hitpointsBlock.LayoutDirection = Control.LayoutDirectionEnum.Ltr;
         _hitpointsBlock.AddThemeConstantOverride(GodotProperty.separation, 20);
 
         SetScore(0);
         AddHitpoints(_hitpoints);
 
-        eventBus.MeteorHit += OnMeteorHit;
+        EventBus.Instance.MeteorHit += OnMeteorHit;
     }
 
     public override void _ExitTree()
     {
+        EventBus.Instance.MeteorHit -= OnMeteorHit;
         base._ExitTree();
-        eventBus.MeteorHit -= OnMeteorHit;
     }
 
     private void OnMeteorHit(Node2D body)

@@ -27,7 +27,7 @@ public partial class AudioManager : Node
         _instance = new AudioManager();
         node.AddChild(_instance);
 
-        rootTree.Root.CallDeferred(Window.MethodName.AddChild, node);
+        rootTree.Root.CallDeferred(Node.MethodName.AddChild, node);
     }
 
     public override void _Ready()
