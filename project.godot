@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="iShootYou"
-run/main_scene="uid://clpae3e1rfyi5"
+run/main_scene="uid://egghx4s7k32h"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 EventBus="*res://core/EventBus.cs"
 Global="*uid://cus23mtx7nocn"
-AudioManager="*uid://bibsahyi8dpqm"
 
 [display]
 

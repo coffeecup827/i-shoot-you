@@ -1,0 +1,4 @@
+- Audio Crossfade
+- Scene Transition Manager
+- GPUParticles2D and Camera2D
+- fully dynamic background

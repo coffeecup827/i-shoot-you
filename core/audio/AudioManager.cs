@@ -6,11 +6,8 @@ using Godot;
 
 public partial class AudioManager : Node
 {
-    public static AudioManager Instance
-    {
-        get;
-        private set;
-    }
+    private static AudioManager _instance;
+    public static AudioManager Instance => _instance;
 
     public readonly Dictionary<string, AudioStream> _sounds = new();
 
@@ -22,17 +19,19 @@ public partial class AudioManager : Node
 
     
     private readonly HashSet<string> validAudioFiles = [".wav", ".mp3"];
+    public static void Initialise(SceneTree rootTree)
+    {
+        if(_instance != null) return;
+
+        var node = new Node { Name="AudioManager" };
+        _instance = new AudioManager();
+        node.AddChild(_instance);
+
+        rootTree.Root.CallDeferred(Window.MethodName.AddChild, node);
+    }
 
     public override void _Ready()
     {
-        if(Instance != null)
-        {
-            QueueFree();
-            return;
-        }
-
-        Instance = this;
-
         ProcessMode = ProcessModeEnum.Always;
 
         // init sound players
