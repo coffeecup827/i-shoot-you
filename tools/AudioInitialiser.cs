@@ -40,7 +40,15 @@ public static class AudioInitialiser
             //sb.AppendLine($"    public const string {pascalIdentifier} = \"{key}\";");
             sb.AppendLine($"    {pascalIdentifier},");
         }
+        foreach (var key in audioSubFolders)
+        {
+            string pascalIdentifier = ToPascalCase(Path.GetFileName(key));
+            //sb.AppendLine($"    public const string {pascalIdentifier} = \"{key}\";");
+            sb.AppendLine($"    Random{pascalIdentifier},");
+        }
         sb.AppendLine("}");
+
+
 
         sb.AppendLine("public static class AudioCueExtensions");
         sb.AppendLine("{");
@@ -52,10 +60,17 @@ public static class AudioInitialiser
             string pascalIdentifier = ToPascalCase(key);
             sb.AppendLine($"       AudioCue.{pascalIdentifier} => \"{key}\",");
         }
+        foreach (var key in audioSubFolders)
+        {
+            string pascalIdentifier = ToPascalCase(Path.GetFileName(key));
+            sb.AppendLine($"       AudioCue.Random{pascalIdentifier} => \"random_{Path.GetFileName(key)}\",");
+        }
         sb.AppendLine("        _ => throw new ArgumentOutOfRangeException(nameof(audioCue))");
         sb.AppendLine("    };");
         
         sb.AppendLine("}");
+
+
 
         File.WriteAllText(outputFilePath, sb.ToString());
         

@@ -14,6 +14,10 @@ public enum AudioCue
     MusicBgmFast,
     MusicBgmSlow,
     PlayerHit,
+    RandomExplosion,
+    RandomLaser,
+    RandomMusic,
+    RandomPlayer,
 }
 public static class AudioCueExtensions
 {
@@ -29,6 +33,10 @@ public static class AudioCueExtensions
        AudioCue.MusicBgmFast => "music_bgm_fast",
        AudioCue.MusicBgmSlow => "music_bgm_slow",
        AudioCue.PlayerHit => "player_hit",
+       AudioCue.RandomExplosion => "random_explosion",
+       AudioCue.RandomLaser => "random_laser",
+       AudioCue.RandomMusic => "random_music",
+       AudioCue.RandomPlayer => "random_player",
         _ => throw new ArgumentOutOfRangeException(nameof(audioCue))
     };
 }

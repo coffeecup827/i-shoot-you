@@ -12,13 +12,16 @@ public partial class AudioManager : Node
         private set;
     }
 
-    private readonly Dictionary<string, AudioStream> _sounds = new();
+    public readonly Dictionary<string, AudioStream> _sounds = new();
 
     private readonly int _parallelAudioPlayable = 16;
 
     private readonly List<AudioStreamPlayer2D> _sfxPlayers = new();
 
     private readonly AudioStreamPlayer2D _bgm = new AudioStreamPlayer2D();
+
+    
+    private readonly HashSet<string> validAudioFiles = [".wav", ".mp3"];
 
     public override void _Ready()
     {
@@ -46,8 +49,6 @@ public partial class AudioManager : Node
 
     private void ScanAndAddAudio(string audioFolderPath)
     {
-        HashSet<string> validAudioFiles = [".wav", ".mp3"];
-
         if (!Directory.Exists(audioFolderPath))
         {
             throw new DirectoryNotFoundException($"Directory Not Found at {audioFolderPath}");
@@ -69,6 +70,28 @@ public partial class AudioManager : Node
                 _sounds.Add(key, audioStream);
             }
         }
+    }
+
+    public AudioStreamRandomizer _BuildAudioStreamRandomiser(string directoryPath, float pitchScale)
+    {
+        if(!Directory.Exists(directoryPath))
+        {
+            throw new DirectoryNotFoundException($"Directory Not Found at {directoryPath}");
+        }
+
+        var audioPool = new AudioStreamRandomizer
+        {
+            RandomPitch = pitchScale
+        };
+
+        GD.Print(string.Join(", ", directoryPath));
+
+        foreach (var audioFile in Directory.GetFiles(directoryPath).Where(file => validAudioFiles.Contains(Path.GetExtension(file))))
+        {
+            audioPool.AddStream(0, GD.Load<AudioStream>(audioFile));
+        }
+
+        return audioPool;
     }
 
     public void PlaySfx(AudioCue cueName)
