@@ -10,10 +10,19 @@ public partial class Level : Node2D
 	private Node2D _lasers;
 	[Export]
 	private Node2D _stars;
+	[Export]
+	private VirtualJoystick _virtualJoystick;
 
 	PackedScene meteorScene = GD.Load<PackedScene>(Scenes.MeteorScene);
 	PackedScene laserScene = GD.Load<PackedScene>(Scenes.LaserScene);
 	PackedScene starScene = GD.Load<PackedScene>(Scenes.StarScene);
+
+    public override void _Ready()
+    {
+        _virtualJoystick.Position = new Vector2(GetViewportRect().Size.X/6, GetViewportRect().Size.Y/2);
+    }
+
+
     private void OnMeteorTimerTimeout()
 	{
 		var meteor = meteorScene.Instantiate<Meteor>();

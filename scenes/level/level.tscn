@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://cg05mufntwi6k" path="res://scenes/level/HUD/headsUpDisplay.tscn" id="4_qkmgm"]
-[ext_resource type="PackedScene" uid="uid://digu4i3vh21ma" path="res://scenes/level/Controls/Controls.tscn" id="5_hnne4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i166f"]
 size = Vector2(54, 720)
@@ -12,11 +11,12 @@ size = Vector2(54, 720)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkmgm"]
 size = Vector2(1315, 116)
 
-[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors", "_lasers", "_stars")]
+[node name="Level" type="Node2D" unique_id=292268600 node_paths=PackedStringArray("_meteors", "_lasers", "_stars", "_virtualJoystick")]
 script = ExtResource("1_qkmgm")
 _meteors = NodePath("Meteors")
 _lasers = NodePath("Lasers")
 _stars = NodePath("Background/Stars")
+_virtualJoystick = NodePath("VirtualJoystick")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=857513838]
 position = Vector2(684, 407.00003)
@@ -87,9 +87,14 @@ autostart = true
 
 [node name="HeadUpDisplay" parent="." unique_id=2102597142 instance=ExtResource("4_qkmgm")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1273895733]
-
-[node name="Controls" parent="CanvasLayer" unique_id=1532509668 instance=ExtResource("5_hnne4")]
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1595832636]
+offset_right = 40.0
+offset_bottom = 40.0
+joystick_size = 125.0
+action_left = &"go_left"
+action_right = &"go_right"
+action_up = &"go_up"
+action_down = &"go_down"
 
 [connection signal="PlayerShoot" from="Player" to="." method="OnPlayerShoot"]
 [connection signal="timeout" from="MeteorTimer" to="." method="OnMeteorTimerTimeout"]
