@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cg05mufntwi6k"]
 
-[ext_resource type="Script" uid="uid://cwpq61138bcjp" path="res://scenes/level/HeadsUpDisplay.cs" id="1_tm6df"]
+[ext_resource type="Script" uid="uid://cwpq61138bcjp" path="res://scenes/level/HUD/HeadsUpDisplay.cs" id="1_tm6df"]
 
 [node name="headsUpDisplay" type="Node2D" unique_id=2102597142 node_paths=PackedStringArray("_scoreLabel", "_hitpointsBlock")]
 script = ExtResource("1_tm6df")

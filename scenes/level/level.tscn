@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://db0k41gc1e2nq" path="res://scenes/level/Level.cs" id="1_qkmgm"]
 [ext_resource type="Texture2D" uid="uid://dyhqj3j3qcgfv" path="res://assets/background/staticBG.jpg" id="2_i166f"]
 [ext_resource type="PackedScene" uid="uid://ljyhjof2og8y" path="res://scenes/player/player.tscn" id="2_qkmgm"]
-[ext_resource type="PackedScene" uid="uid://cg05mufntwi6k" path="res://scenes/level/headsUpDisplay.tscn" id="4_qkmgm"]
+[ext_resource type="PackedScene" uid="uid://cg05mufntwi6k" path="res://scenes/level/HUD/headsUpDisplay.tscn" id="4_qkmgm"]
+[ext_resource type="PackedScene" uid="uid://digu4i3vh21ma" path="res://scenes/level/Controls/Controls.tscn" id="5_hnne4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i166f"]
 size = Vector2(54, 720)
@@ -85,6 +86,10 @@ wait_time = 0.15
 autostart = true
 
 [node name="HeadUpDisplay" parent="." unique_id=2102597142 instance=ExtResource("4_qkmgm")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1273895733]
+
+[node name="Controls" parent="CanvasLayer" unique_id=1532509668 instance=ExtResource("5_hnne4")]
 
 [connection signal="PlayerShoot" from="Player" to="." method="OnPlayerShoot"]
 [connection signal="timeout" from="MeteorTimer" to="." method="OnMeteorTimerTimeout"]
